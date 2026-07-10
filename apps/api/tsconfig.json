@@ -5,10 +5,11 @@
     "target": "ESNext",
     "strict": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
-  }
+  },
+  "include": ["src/**/*"]
 }

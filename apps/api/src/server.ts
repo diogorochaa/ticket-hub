@@ -1,15 +1,27 @@
-import fastify from "fastify";
+import Fastify from "fastify";
+import {
+    validatorCompiler,
+    serializerCompiler,
+    ZodTypeProvider,
+} from "fastify-type-provider-zod";
 
-const server = fastify();
+import { userRoutes } from "./modules/users/presentation/routes/user.routes";
+import { createUserController } from "./core/container";
 
-server.get("/", (req, res) => {
-  return { hello: "world" };
+const app = Fastify()
+    .withTypeProvider<ZodTypeProvider>();
+
+app.setValidatorCompiler(validatorCompiler);
+app.setSerializerCompiler(serializerCompiler);
+
+await app.register(async (instance) => {
+    await userRoutes(instance, createUserController);
 });
 
-server.listen({ port: 3000 }, (err, address) => {
-  if (err) {
+try {
+    const address = await app.listen({ port: 3000 });
+    console.log(`Server is running on ${address}`);
+} catch (err) {
     console.error(err);
     process.exit(1);
-  }
-  console.log(`Server is running on ${address}`);
-});
+}
