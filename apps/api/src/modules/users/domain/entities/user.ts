@@ -28,6 +28,10 @@ export class User {
         });
     }
 
+    static restore(props: UserProps): User {
+        return new User(props);
+    }
+
     get id() {
         return this.props.id;
     }

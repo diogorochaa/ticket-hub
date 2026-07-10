@@ -5,5 +5,10 @@
     "target": "ESNext",
     "strict": true,
     "esModuleInterop": true,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
   }
 }
