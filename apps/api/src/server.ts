@@ -5,18 +5,15 @@ import {
     ZodTypeProvider,
 } from "fastify-type-provider-zod";
 
-import { userRoutes } from "./modules/users/presentation/routes/user.routes";
-import { createUserController } from "./core/container";
+import { registerModules } from "@/core/register-modules";
+import { prisma } from "@/infra/db/prisma/prisma";
 
-const app = Fastify()
-    .withTypeProvider<ZodTypeProvider>();
+const app = Fastify().withTypeProvider<ZodTypeProvider>();
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
-await app.register(async (instance) => {
-    await userRoutes(instance, createUserController);
-});
+await registerModules(app, { prisma });
 
 try {
     const address = await app.listen({ port: 3000 });

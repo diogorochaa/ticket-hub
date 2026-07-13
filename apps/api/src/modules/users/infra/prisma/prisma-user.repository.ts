@@ -3,7 +3,7 @@
 import { UserRepository } from "../../domain/repositories/user.repository";
 import { User } from "../../domain/entities/user";
 import { Email } from "../../domain/value-objects/email";
-import { UserMapper } from "./user.mapper";
+import { UserMapper } from "../mappers/user.mapper";
 import { PrismaClient } from "../../../../../generated/prisma/client";
 
 export class PrismaUserRepository implements UserRepository {
