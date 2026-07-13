@@ -349,3 +349,11 @@ Observabilidade
 - Reembolso
 - Dashboard do organizador
 - Dashboard administrativo
+
+---
+
+# Documentação relacionada
+
+- [Arquitetura da API](./02-architecture.md)
+- [Módulo de usuários](./03-users-module.md)
+- [ADRs](./adr/)

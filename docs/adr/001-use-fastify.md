@@ -139,3 +139,5 @@ Caso seja necessário substituir o Fastify por outro framework no futuro, a alte
 
 - https://fastify.dev
 - https://fastify.dev/docs/latest/Reference/
+- [ADR 002 - Composition root por módulo](./002-composition-root-per-module.md)
+- [Arquitetura da API](../02-architecture.md)
