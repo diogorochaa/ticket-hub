@@ -363,3 +363,5 @@ Observabilidade
   - [004 — PostgreSQL](./adr/004-use-postgresql.md)
   - [005 — Docker](./adr/005-use-docker.md)
   - [006 — Monorepo + Turborepo](./adr/006-use-monorepo-turborepo.md)
+  - [007 — Auth JWT + refresh](./adr/007-auth-jwt-refresh.md)
+- [Módulo de autenticação](./04-auth-module.md)

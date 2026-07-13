@@ -74,9 +74,9 @@ Motivos principais:
 3. **Evolução** — o arquivo de Compose cresce junto com a arquitetura futura.
 4. **Proximidade com produção** — a app continua “12-factor” (config via env); deps são serviços, não libs embutidas.
 
-Escopo atual: serviço `postgres` em `docker/docker-compose.yml`.
+Escopo atual: serviços `postgres` e `mailpit` em `docker/docker-compose.yml`.
 
-Escopo previsto: Redis, RabbitMQ, MinIO, Mailpit, e eventualmente a própria API em container.
+Escopo previsto: Redis, RabbitMQ, MinIO, e eventualmente a própria API em container.
 
 ---
 

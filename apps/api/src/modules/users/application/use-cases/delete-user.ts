@@ -1,6 +1,6 @@
 import type { DeleteUserInput } from "../dto/delete-user.dto";
 import { UserNotFoundError } from "../../domain/errors/user-not-found.error";
-import type { UserRepository } from "../../domain/repositories/user.repository";
+import type { UserRepository } from "../../domain/repository/user.repository";
 
 export class DeleteUserUseCase {
     constructor(private readonly userRepository: UserRepository) {}

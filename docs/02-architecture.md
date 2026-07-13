@@ -43,8 +43,10 @@ A montagem de dependências é **explícita e por módulo**:
 
 ```
 server.ts
-  → registerModules({ prisma })
+  → registerModules({ prisma, eventBus, mailer, passwordHasher, tokenService })
+      → registerNotificationsModule(...)
       → registerUsersModule(...)
+      → registerAuthModule(...)
       → registerEventsModule(...)   # futuro
 ```
 

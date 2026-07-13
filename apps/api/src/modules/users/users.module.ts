@@ -20,10 +20,14 @@ export async function registerUsersModule(
 ) {
     const userRepository = new PrismaUserRepository(deps.prisma);
 
+    const createUserUseCase = new CreateUserUseCase(
+        userRepository,
+        deps.passwordHasher,
+        deps.eventBus,
+    );
+
     await userRoutes(app, {
-        createUser: new CreateUserController(
-            new CreateUserUseCase(userRepository),
-        ),
+        createUser: new CreateUserController(createUserUseCase),
         getUserByEmail: new GetUserByEmailController(
             new GetUserByEmailUseCase(userRepository),
         ),
@@ -31,7 +35,7 @@ export async function registerUsersModule(
             new GetUserByIdUseCase(userRepository),
         ),
         updateUser: new UpdateUserController(
-            new UpdateUserUseCase(userRepository),
+            new UpdateUserUseCase(userRepository, deps.passwordHasher),
         ),
         deleteUser: new DeleteUserController(
             new DeleteUserUseCase(userRepository),

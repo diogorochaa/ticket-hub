@@ -1,4 +1,4 @@
-import { User } from "../../domain/entities/user";
+import { User } from "../../domain/entity/user";
 import { Email } from "../../domain/value-objects/email";
 import { Name } from "../../domain/value-objects/name";
 import { Password } from "../../domain/value-objects/password";
@@ -19,7 +19,7 @@ export class UserMapper {
             id: raw.id,
             name: Name.create(raw.name),
             email: Email.create(raw.email),
-            password: Password.create(raw.passwordHash),
+            password: Password.restore(raw.passwordHash),
             createdAt: raw.createdAt,
             updatedAt: raw.updatedAt,
         });

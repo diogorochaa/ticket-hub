@@ -1,6 +1,6 @@
 import { GetUserByEmailInput, GetUserByEmailOutput } from "@/modules/users/application/dto/get-user-by-email.dto";
 import { UserNotFoundError } from "@/modules/users/domain/errors/user-not-found.error";
-import { UserRepository } from "@/modules/users/domain/repositories/user.repository";
+import { UserRepository } from "@/modules/users/domain/repository/user.repository";
 import { Email } from "@/modules/users/domain/value-objects/email";
 
 export class GetUserByEmailUseCase {

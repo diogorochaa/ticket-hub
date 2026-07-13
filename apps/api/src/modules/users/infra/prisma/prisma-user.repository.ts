@@ -1,7 +1,7 @@
 
 
-import { UserRepository } from "../../domain/repositories/user.repository";
-import { User } from "../../domain/entities/user";
+import { UserRepository } from "../../domain/repository/user.repository";
+import { User } from "../../domain/entity/user";
 import { Email } from "../../domain/value-objects/email";
 import { UserMapper } from "../mappers/user.mapper";
 import { PrismaClient } from "../../../../../generated/prisma/client";

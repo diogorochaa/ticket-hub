@@ -71,6 +71,7 @@ A API sobe em `http://127.0.0.1:3000`.
 | [docs/01-domain.md](docs/01-domain.md) | Domínio, atores e regras de negócio |
 | [docs/02-architecture.md](docs/02-architecture.md) | Arquitetura da API e composição de módulos |
 | [docs/03-users-module.md](docs/03-users-module.md) | Módulo de usuários (endpoints) |
+| [docs/04-auth-module.md](docs/04-auth-module.md) | Auth (register/login/refresh) + e-mail |
 | [docs/adr/](docs/adr/) | Decisões de arquitetura (Fastify, DI, Prisma, PostgreSQL, Docker, monorepo, …) |
 | [docs/diagrams/](docs/diagrams/) | Diagramas Excalidraw (atual e futuro) |
 

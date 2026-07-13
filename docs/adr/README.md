@@ -10,3 +10,4 @@ Decisões de arquitetura do TicketHub.
 | [004](./004-use-postgresql.md) | PostgreSQL como banco de dados | Aceito |
 | [005](./005-use-docker.md) | Docker Compose para infra local | Aceito |
 | [006](./006-use-monorepo-turborepo.md) | Monorepo com pnpm + Turborepo | Aceito |
+| [007](./007-auth-jwt-refresh.md) | Auth JWT + refresh opaco | Aceito |

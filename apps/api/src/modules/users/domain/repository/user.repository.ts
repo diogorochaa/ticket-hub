@@ -1,4 +1,4 @@
-import { User } from "../entities/user";
+import { User } from "../entity/user";
 import { Email } from "../value-objects/email";
 
 export interface UserRepository {
