@@ -39,14 +39,17 @@ Content-Type: application/json
 ### Buscar por email
 
 ```http
-GET /users/email?email=jane@example.com
+GET /users/email/jane@example.com
 ```
+
+O `@` e caracteres especiais devem ser URL-encoded quando necessário  
+(ex.: `/users/email/jane%40example.com`).
 
 **200** — mesmo shape de resposta do create (sem password).
 
 | Status | Quando |
 |--------|--------|
-| 400 | Query inválida |
+| 400 | `email` inválido |
 | 404 | Usuário não encontrado |
 
 ---
@@ -120,4 +123,5 @@ DELETE /users/:id
 
 - Senha não é retornada nas respostas
 - `passwordHash` no banco ainda reflete o valor persistido pelo mapper atual (hashing pode evoluir depois)
-- A rota `/users/email` fica registrada **antes** de `/users/:id` para não conflitar com o param
+- A rota `/users/email/:email` fica registrada **antes** de `/users/:id` para não conflitar com o param
+- Email no path é identificador único (mesmo padrão do `:id`); query string fica para filtros/listagens

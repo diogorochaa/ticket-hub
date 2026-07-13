@@ -7,7 +7,7 @@ import { GetUserByIdController } from "../controllers/get-user-by-id.controller"
 import { UpdateUserController } from "../controllers/update-user.controller";
 import { createUserSchema } from "../schemas/create-user.schema";
 import { deleteUserParamsSchema } from "../schemas/delete-user.schema";
-import { getUserByEmailSchema } from "../schemas/get-user-by-email";
+import { getUserByEmailParamsSchema } from "../schemas/get-user-by-email.schema";
 import { getUserByIdSchema } from "../schemas/get-user-by-id.schema";
 import {
     updateUserBodySchema,
@@ -33,8 +33,8 @@ export async function userRoutes(
     );
 
     app.get(
-        "/users/email",
-        { schema: { querystring: getUserByEmailSchema } },
+        "/users/email/:email",
+        { schema: { params: getUserByEmailParamsSchema } },
         controllers.getUserByEmail.handle,
     );
 

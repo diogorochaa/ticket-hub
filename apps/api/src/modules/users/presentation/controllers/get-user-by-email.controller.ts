@@ -1,22 +1,23 @@
+import { FastifyReply, FastifyRequest } from "fastify";
+
 import { GetUserByEmailUseCase } from "@/modules/users/application/use-cases/get-user-by-email";
 import { UserNotFoundError } from "@/modules/users/domain/errors/user-not-found.error";
-import { GetUserByEmailRequest } from "@/modules/users/presentation/schemas/get-user-by-email";
-import { FastifyReply, FastifyRequest } from "fastify";
+import type { GetUserByEmailParams } from "../schemas/get-user-by-email.schema";
 
 export class GetUserByEmailController {
     constructor(private readonly getUserByEmailUseCase: GetUserByEmailUseCase) {}
 
     handle = async (
-        request: FastifyRequest<{ Querystring: GetUserByEmailRequest }>,
-        response: FastifyReply,
+        request: FastifyRequest<{ Params: GetUserByEmailParams }>,
+        reply: FastifyReply,
     ) => {
         try {
-            const result = await this.getUserByEmailUseCase.execute(request.query);
+            const result = await this.getUserByEmailUseCase.execute(request.params);
 
-            return response.status(200).send(result);
+            return reply.status(200).send(result);
         } catch (error) {
             if (error instanceof UserNotFoundError) {
-                return response.status(404).send({ message: error.message });
+                return reply.status(404).send({ message: error.message });
             }
 
             throw error;
