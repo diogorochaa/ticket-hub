@@ -67,10 +67,13 @@ Libs de DI (tsyringe, inversify, Nest) ficam de fora por enquanto; ver [ADR 002]
 
 ## Persistência
 
-- PostgreSQL
+- **PostgreSQL** como banco principal — ver [ADR 004](./adr/004-use-postgresql.md)
+- **Prisma** como ORM/acesso a dados na infra — ver [ADR 003](./adr/003-use-prisma.md)
 - Prisma Client gerado em `apps/api/generated/prisma`
 - Adapter `pg` (`@prisma/adapter-pg`)
-- Repositórios implementam ports definidos no domínio
+- Repositórios implementam ports definidos no domínio (o domínio não importa Prisma)
+
+Infra local dos serviços (Postgres hoje; Redis/Rabbit/etc. no futuro) sobe com **Docker Compose** — ver [ADR 005](./adr/005-use-docker.md).
 
 ## Como adicionar um módulo novo
 

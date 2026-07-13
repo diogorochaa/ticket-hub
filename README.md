@@ -2,7 +2,7 @@
 
 Plataforma para venda de ingressos de eventos.
 
-Monorepo com pnpm + Turborepo. A API segue Arquitetura Hexagonal, com Fastify na camada de apresentação.
+Monorepo com pnpm + Turborepo — ver [ADR 006](docs/adr/006-use-monorepo-turborepo.md). A API segue Arquitetura Hexagonal, com Fastify na camada de apresentação.
 
 ## Estrutura
 
@@ -71,7 +71,7 @@ A API sobe em `http://127.0.0.1:3000`.
 | [docs/01-domain.md](docs/01-domain.md) | Domínio, atores e regras de negócio |
 | [docs/02-architecture.md](docs/02-architecture.md) | Arquitetura da API e composição de módulos |
 | [docs/03-users-module.md](docs/03-users-module.md) | Módulo de usuários (endpoints) |
-| [docs/adr/](docs/adr/) | Decisões de arquitetura |
+| [docs/adr/](docs/adr/) | Decisões de arquitetura (Fastify, DI, Prisma, PostgreSQL, Docker, monorepo, …) |
 | [docs/diagrams/](docs/diagrams/) | Diagramas Excalidraw (atual e futuro) |
 
 ## Stack principal
