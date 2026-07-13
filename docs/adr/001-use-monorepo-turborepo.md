@@ -1,4 +1,4 @@
-# ADR 006 - Monorepo com pnpm workspaces e Turborepo
+# ADR 001 - Monorepo com pnpm workspaces e Turborepo
 
 ## Status
 
@@ -136,4 +136,5 @@ Configurações: `pnpm-workspace.yaml`, `turbo.json`, `package.json` na raiz.
 - https://turborepo.dev/docs
 - https://pnpm.io/workspaces
 - [README do projeto](../../README.md)
-- [Arquitetura da API](../02-architecture.md)
+- [Arquitetura da API](../backend/01-architecture.md)
+- [Arquitetura do frontend](../frontend/01-architecture.md)

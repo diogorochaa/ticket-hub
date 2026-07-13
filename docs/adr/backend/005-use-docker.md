@@ -113,5 +113,5 @@ A aplicação Node **não** precisa rodar dentro do Docker no dia a dia; costuma
 
 - https://docs.docker.com/compose/
 - [ADR 004 - PostgreSQL](./004-use-postgresql.md)
-- [README do projeto](../../README.md)
-- [Diagrama futuro](../diagrams/02-architecture-future.excalidraw)
+- [README do projeto](../../../README.md)
+- [Diagrama futuro](../../diagrams/02-architecture-future.excalidraw)

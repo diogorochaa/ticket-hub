@@ -2,39 +2,39 @@
 
 Plataforma para venda de ingressos de eventos.
 
-Monorepo com pnpm + Turborepo — ver [ADR 006](docs/adr/006-use-monorepo-turborepo.md). A API segue Arquitetura Hexagonal, com Fastify na camada de apresentação.
+Monorepo com pnpm + Turborepo — ver [ADR 001](docs/adr/001-use-monorepo-turborepo.md). A API segue Arquitetura Hexagonal; o web usa React + Vite + TanStack Query + shadcn/ui.
 
 ## Estrutura
 
 ```
 apps/
   api/     API HTTP (Fastify + Prisma + PostgreSQL)
-  web/     Frontend (React + Vite)
+  web/     Frontend (React + Vite + TanStack Query + shadcn)
   docs/    App de documentação (Next.js)
 packages/
   ui/                 Componentes compartilhados
   eslint-config/      Configurações ESLint
   typescript-config/  Configurações TypeScript
-docker/               Infra local (PostgreSQL)
-docs/                 Domínio, arquitetura e ADRs
+docker/               Infra local (PostgreSQL, Mailpit)
+docs/                 Domínio, backend, frontend e ADRs
 ```
 
 ## Pré-requisitos
 
 - Node.js >= 18
 - pnpm 9
-- Docker (para o PostgreSQL)
+- Docker (PostgreSQL + Mailpit)
 
 ## Setup
 
 ```sh
 pnpm install
 
-# sobe o banco
+# sobe o banco (+ Mailpit)
 docker compose -f docker/docker-compose.yml up -d
 
 # API: variáveis de ambiente
-cp apps/api/.env.example apps/api/.env   # se existir; senão crie com DATABASE_URL
+cp apps/api/.env.example apps/api/.env
 
 # Prisma
 cd apps/api
@@ -42,42 +42,29 @@ pnpm generate
 pnpm migration
 ```
 
-Exemplo de `apps/api/.env`:
-
-```env
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres
-```
-
 ## Desenvolvimento
 
-Na raiz:
-
 ```sh
-pnpm dev
+pnpm dev                      # turbo (api + web + …)
+pnpm --filter api dev         # só a API → http://127.0.0.1:3000
+pnpm --filter web dev         # só o web
 ```
-
-Somente a API:
-
-```sh
-pnpm --filter api dev
-```
-
-A API sobe em `http://127.0.0.1:3000`.
 
 ## Documentação
 
-| Documento | Conteúdo |
-|-----------|----------|
-| [docs/01-domain.md](docs/01-domain.md) | Domínio, atores e regras de negócio |
-| [docs/02-architecture.md](docs/02-architecture.md) | Arquitetura da API e composição de módulos |
-| [docs/03-users-module.md](docs/03-users-module.md) | Módulo de usuários (endpoints) |
-| [docs/04-auth-module.md](docs/04-auth-module.md) | Auth (register/login/refresh) + e-mail |
-| [docs/adr/](docs/adr/) | Decisões de arquitetura (Fastify, DI, Prisma, PostgreSQL, Docker, monorepo, …) |
-| [docs/diagrams/](docs/diagrams/) | Diagramas Excalidraw (atual e futuro) |
+Comece por [docs/README.md](docs/README.md).
+
+| Área | Caminho |
+|------|---------|
+| Domínio | [docs/01-domain.md](docs/01-domain.md) |
+| Backend | [docs/backend/](docs/backend/) |
+| Frontend | [docs/frontend/](docs/frontend/) |
+| ADRs | [docs/adr/](docs/adr/) (backend / frontend / monorepo) |
+| Diagramas | [docs/diagrams/](docs/diagrams/) |
 
 ## Stack principal
 
 - **API:** Node.js, Fastify, Zod, Prisma, PostgreSQL
-- **Frontend:** React, Vite
+- **Frontend:** React, Vite, TanStack Query, shadcn/ui, Tailwind
 - **Monorepo:** pnpm, Turborepo
 - **Infra local:** Docker

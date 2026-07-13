@@ -318,9 +318,9 @@ Frontend
 
 - React
 - Vite
-- TanStack Query
+- TanStack Query — [ADR 001](./adr/frontend/001-use-tanstack-query.md)
 - Tailwind CSS
-- shadcn/ui
+- shadcn/ui — [ADR 002](./adr/frontend/002-use-shadcn.md)
 
 Infraestrutura
 
@@ -354,14 +354,10 @@ Observabilidade
 
 # Documentação relacionada
 
-- [Arquitetura da API](./02-architecture.md)
-- [Módulo de usuários](./03-users-module.md)
+- [Índice da documentação](./README.md)
+- [Backend](./backend/)
+- [Frontend](./frontend/)
 - [ADRs](./adr/)
-  - [001 — Fastify](./adr/001-use-fastify.md)
-  - [002 — Composition root](./adr/002-composition-root-per-module.md)
-  - [003 — Prisma](./adr/003-use-prisma.md)
-  - [004 — PostgreSQL](./adr/004-use-postgresql.md)
-  - [005 — Docker](./adr/005-use-docker.md)
-  - [006 — Monorepo + Turborepo](./adr/006-use-monorepo-turborepo.md)
-  - [007 — Auth JWT + refresh](./adr/007-auth-jwt-refresh.md)
-- [Módulo de autenticação](./04-auth-module.md)
+  - Compartilhado: [001 — Monorepo](./adr/001-use-monorepo-turborepo.md)
+  - Backend: [001 Fastify](./adr/backend/001-use-fastify.md) · [002 DI](./adr/backend/002-composition-root-per-module.md) · [003 Prisma](./adr/backend/003-use-prisma.md) · [004 PostgreSQL](./adr/backend/004-use-postgresql.md) · [005 Docker](./adr/backend/005-use-docker.md) · [006 Auth](./adr/backend/006-auth-jwt-refresh.md)
+  - Frontend: [001 TanStack Query](./adr/frontend/001-use-tanstack-query.md) · [002 shadcn](./adr/frontend/002-use-shadcn.md)

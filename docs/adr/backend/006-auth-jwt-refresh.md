@@ -1,4 +1,4 @@
-# ADR 007 - Autenticação com JWT (access) + refresh opaco
+# ADR 006 - Autenticação com JWT (access) + refresh opaco
 
 ## Status
 
@@ -66,6 +66,6 @@ Desvantagens: uma tabela a mais; refresh exige hit no banco.
 
 ## Referências
 
-- [docs/04-auth-module.md](../04-auth-module.md)
+- [docs/backend/03-auth-module.md](../../backend/03-auth-module.md)
 - [ADR 002 - Composition root](./002-composition-root-per-module.md)
 - [ADR 005 - Docker](./005-use-docker.md)

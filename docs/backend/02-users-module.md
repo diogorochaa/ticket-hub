@@ -122,7 +122,7 @@ DELETE /users/:id
 ## Observações
 
 - Senha não é retornada nas respostas
-- Senhas são persistidas com **bcrypt**; cadastro público preferencial via [`/auth/register`](./04-auth-module.md)
+- Senhas são persistidas com **bcrypt**; cadastro público preferencial via [`/auth/register`](./03-auth-module.md)
 - `passwordHash` no banco armazena o hash bcrypt
 - A rota `/users/email/:email` fica registrada **antes** de `/users/:id` para não conflitar com o param
 - Email no path é identificador único (mesmo padrão do `:id`); query string fica para filtros/listagens

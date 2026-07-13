@@ -146,6 +146,6 @@ Configuração relevante no projeto:
 
 - https://www.prisma.io/docs
 - [ADR 004 - PostgreSQL](./004-use-postgresql.md)
-- [Arquitetura da API](../02-architecture.md)
+- [Arquitetura da API](../../backend/01-architecture.md)
 - [ADR 001 - Fastify](./001-use-fastify.md)
 - [ADR 002 - Composition root](./002-composition-root-per-module.md)

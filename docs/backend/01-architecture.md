@@ -59,7 +59,7 @@ Deps compartilhadas ficam tipadas em `core/app-deps.ts`.
 - Evita acoplar a composição ao Fastify (`decorate`) ou a um container opaco
 - Facilita testes: basta injetar fakes no `register*Module`
 
-Libs de DI (tsyringe, inversify, Nest) ficam de fora por enquanto; ver [ADR 002](adr/002-composition-root-per-module.md).
+Libs de DI (tsyringe, inversify, Nest) ficam de fora por enquanto; ver [ADR 002](../adr/backend/002-composition-root-per-module.md).
 
 ## Camada HTTP
 
@@ -69,20 +69,20 @@ Libs de DI (tsyringe, inversify, Nest) ficam de fora por enquanto; ver [ADR 002]
 
 ## Persistência
 
-- **PostgreSQL** como banco principal — ver [ADR 004](./adr/004-use-postgresql.md)
-- **Prisma** como ORM/acesso a dados na infra — ver [ADR 003](./adr/003-use-prisma.md)
+- **PostgreSQL** como banco principal — ver [ADR 004](../adr/backend/004-use-postgresql.md)
+- **Prisma** como ORM/acesso a dados na infra — ver [ADR 003](../adr/backend/003-use-prisma.md)
 - Prisma Client gerado em `apps/api/generated/prisma`
 - Adapter `pg` (`@prisma/adapter-pg`)
 - Repositórios implementam ports definidos no domínio (o domínio não importa Prisma)
 
-Infra local dos serviços (Postgres hoje; Redis/Rabbit/etc. no futuro) sobe com **Docker Compose** — ver [ADR 005](./adr/005-use-docker.md).
+Infra local dos serviços (Postgres hoje; Redis/Rabbit/etc. no futuro) sobe com **Docker Compose** — ver [ADR 005](../adr/backend/005-use-docker.md).
 
 ## Como adicionar um módulo novo
 
 1. Criar `src/modules/<nome>/` com domain / application / infra / presentation
 2. Criar `<nome>.module.ts` com o wiring
 3. Registrar em `core/register-modules.ts`
-4. Documentar endpoints em `docs/`
+4. Documentar endpoints em `docs/backend/`
 
 ## Diagramas
 
@@ -90,5 +90,5 @@ Abrir no [Excalidraw](https://excalidraw.com) (File → Open):
 
 | Arquivo | Conteúdo |
 |---------|----------|
-| [diagrams/01-architecture-current.excalidraw](./diagrams/01-architecture-current.excalidraw) | Arquitetura atual do monorepo/API |
-| [diagrams/02-architecture-future.excalidraw](./diagrams/02-architecture-future.excalidraw) | Alvo: LB, Redis, RabbitMQ, workers, anti-concorrência |
+| [diagrams/01-architecture-current.excalidraw](../diagrams/01-architecture-current.excalidraw) | Arquitetura atual do monorepo/API |
+| [diagrams/02-architecture-future.excalidraw](../diagrams/02-architecture-future.excalidraw) | Alvo: LB, Redis, RabbitMQ, workers, anti-concorrência |

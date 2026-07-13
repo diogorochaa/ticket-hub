@@ -119,5 +119,5 @@ Motivos principais:
 - https://www.postgresql.org/docs/
 - [ADR 003 - Prisma](./003-use-prisma.md)
 - [ADR 005 - Docker](./005-use-docker.md)
-- [Arquitetura da API](../02-architecture.md)
-- [Diagrama futuro](../diagrams/02-architecture-future.excalidraw)
+- [Arquitetura da API](../../backend/01-architecture.md)
+- [Diagrama futuro](../../diagrams/02-architecture-future.excalidraw)

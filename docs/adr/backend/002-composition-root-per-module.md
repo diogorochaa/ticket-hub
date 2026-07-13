@@ -105,5 +105,5 @@ Adotar **composition root por módulo**, sem lib de DI e sem container central.
 
 ## Referências
 
-- [docs/02-architecture.md](../02-architecture.md)
+- [docs/backend/01-architecture.md](../../backend/01-architecture.md)
 - [ADR 001 - Fastify](./001-use-fastify.md)
