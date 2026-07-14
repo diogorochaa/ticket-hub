@@ -10,7 +10,7 @@ export function HomePage() {
       <section className="flex items-center justify-center bg-black">
         <div className="flex flex-col items-start gap-2 text-white">
           <span className="text-purple-700 uppercase font-bold leading-1">Show</span>
-          <h1 className="text-6xl font-bold">Rock in Rio 2026</h1>
+          <h1 className="text-6xl font-bold uppercase">Rock in Rio 2026</h1>
           <p>O maior festival de música e experiências <br /> do mundo está de volta!</p>
           <div className="flex items-center gap-2">
             <Calendar className="w-6 h-6" />
