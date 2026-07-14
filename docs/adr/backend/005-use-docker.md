@@ -10,7 +10,7 @@ Aceito
 
 O TicketHub depende de serviços de infraestrutura além da aplicação Node.js. Hoje já é necessário o **PostgreSQL**; no futuro entram Redis, RabbitMQ, MinIO, Mailpit e demais componentes descritos na arquitetura alvo.
 
-Era necessário padronizar como o time sobe e compartilha esses serviços no desenvolvimento, sem instalar cada um manualmente na máquina.
+Era necessário padronizar como o time sobe e compartilha esses serviços no desenvolvimento, sem instalar cada um manualmente na máquina. Hoje isso inclui PostgreSQL, Redis, RabbitMQ, Nginx (LB) e Mailpit.
 
 ---
 
@@ -74,9 +74,15 @@ Motivos principais:
 3. **Evolução** — o arquivo de Compose cresce junto com a arquitetura futura.
 4. **Proximidade com produção** — a app continua “12-factor” (config via env); deps são serviços, não libs embutidas.
 
-Escopo atual: serviços `postgres` e `mailpit` em `docker/docker-compose.yml`.
+Escopo atual em `docker/docker-compose.yml`:
 
-Escopo previsto: Redis, RabbitMQ, MinIO, e eventualmente a própria API em container.
+- `postgres` — source of truth
+- `redis` — cache + locks
+- `rabbitmq` — eventos (AMQP host `5673`, UI `15673`)
+- `nginx` — LB na porta `8080` → API no host
+- `mailpit` — SMTP de desenvolvimento
+
+Escopo futuro: MinIO, workers dedicados, API também em container.
 
 ---
 

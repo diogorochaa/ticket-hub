@@ -18,4 +18,6 @@ export const env = {
     smtpHost: required("SMTP_HOST", "localhost"),
     smtpPort: Number(process.env.SMTP_PORT ?? 1025),
     mailFrom: required("MAIL_FROM", "noreply@tickethub.local"),
+    redisUrl: required("REDIS_URL", "redis://localhost:6379"),
+    rabbitmqUrl: required("RABBITMQ_URL", "amqp://ticket:ticket@localhost:5673"),
 };

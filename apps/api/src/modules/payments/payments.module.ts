@@ -18,7 +18,13 @@ export async function registerPaymentsModule(app: FastifyInstance, deps: AppDeps
     const controller = new PaymentController(
         new CreatePaymentUseCase(paymentRepo, reservationRepo),
         new GetPaymentByIdUseCase(paymentRepo),
-        new HandlePaymentWebhookUseCase(paymentRepo, reservationRepo, ticketRepo),
+        new HandlePaymentWebhookUseCase(
+            paymentRepo,
+            reservationRepo,
+            ticketRepo,
+            deps.cache,
+            deps.messageBus,
+        ),
     );
     await paymentRoutes(app, controller);
 }

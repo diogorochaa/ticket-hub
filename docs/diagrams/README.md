@@ -4,14 +4,15 @@ Arquivos Excalidraw do TicketHub. Abra em [excalidraw.com](https://excalidraw.co
 
 | Arquivo | Escopo |
 |---------|--------|
-| [01-architecture-current.excalidraw](./01-architecture-current.excalidraw) | Como o projeto está hoje: monorepo, API hexagonal, módulo `users`, PostgreSQL |
-| [02-architecture-future.excalidraw](./02-architecture-future.excalidraw) | Alvo: load balancer, cluster de APIs, Redis, RabbitMQ, workers, MinIO, fluxo anti-concorrência de vendas, observabilidade |
+| [01-architecture-current.excalidraw](./01-architecture-current.excalidraw) | Visão inicial (monorepo + API hexagonal + Postgres) |
+| [02-architecture-future.excalidraw](./02-architecture-future.excalidraw) | Alvo de escala — **agora refletido no Compose** (Nginx, Redis, RabbitMQ) |
 
-## Futuro (resumo do diagrama)
+Detalhe textual e decisões: [docs/backend/04-scale-100k.md](../backend/04-scale-100k.md).
 
-- **Edge:** clientes → CDN/WAF → load balancer → N réplicas da API
-- **Redis:** cache, locks (`SET NX`), TTL de reserva, rate-limit
-- **RabbitMQ:** eventos entre módulos (`TicketReserved`, `PaymentApproved`, `ReservationExpired`)
-- **Workers:** expiração de reserva, notificações, webhooks
-- **PostgreSQL:** source of truth + constraints
-- **Venda:** lock Redis → reserva transacional → evento → pagamento idempotente → `SOLD` / liberação
+## Escala (resumo)
+
+- **Edge:** clientes → Nginx LB (`:8080`) → N APIs Fastify
+- **Redis:** cache de leitura + locks `SET NX` por ticket
+- **RabbitMQ:** `ticket.reserved` / `released` / `sold` (workers depois)
+- **PostgreSQL:** source of truth + UPDATE condicional anti-oversell
+- **Venda:** lock Redis → `tryReserve` no PG → evento → pagamento idempotente → `SOLD` / liberação

@@ -359,5 +359,5 @@ Observabilidade
 - [Frontend](./frontend/)
 - [ADRs](./adr/)
   - Compartilhado: [001 — Monorepo](./adr/001-use-monorepo-turborepo.md)
-  - Backend: [001 Fastify](./adr/backend/001-use-fastify.md) · [002 DI](./adr/backend/002-composition-root-per-module.md) · [003 Prisma](./adr/backend/003-use-prisma.md) · [004 PostgreSQL](./adr/backend/004-use-postgresql.md) · [005 Docker](./adr/backend/005-use-docker.md) · [006 Auth](./adr/backend/006-auth-jwt-refresh.md)
+  - Backend: [001 Fastify](./adr/backend/001-use-fastify.md) · [002 DI](./adr/backend/002-composition-root-per-module.md) · [003 Prisma](./adr/backend/003-use-prisma.md) · [004 PostgreSQL](./adr/backend/004-use-postgresql.md) · [005 Docker](./adr/backend/005-use-docker.md) · [006 Auth](./adr/backend/006-auth-jwt-refresh.md) · [007 Redis](./adr/backend/007-use-redis-cache-locks.md) · [008 Rabbit](./adr/backend/008-use-rabbitmq.md) · [009 LB](./adr/backend/009-load-balancer-stateless-api.md)
   - Frontend: [001 TanStack Query](./adr/frontend/001-use-tanstack-query.md) · [002 shadcn](./adr/frontend/002-use-shadcn.md)

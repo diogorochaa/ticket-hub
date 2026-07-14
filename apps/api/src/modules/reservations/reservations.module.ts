@@ -14,10 +14,21 @@ export async function registerReservationsModule(app: FastifyInstance, deps: App
     const reservationRepo = new PrismaReservationRepository(deps.prisma);
     const ticketRepo = new PrismaTicketRepository(deps.prisma);
     const controller = new ReservationController(
-        new CreateReservationUseCase(reservationRepo, ticketRepo),
+        new CreateReservationUseCase(
+            reservationRepo,
+            ticketRepo,
+            deps.lock,
+            deps.cache,
+            deps.messageBus,
+        ),
         new GetReservationByIdUseCase(reservationRepo),
         new ListReservationsByUserUseCase(reservationRepo),
-        new CancelReservationUseCase(reservationRepo, ticketRepo),
+        new CancelReservationUseCase(
+            reservationRepo,
+            ticketRepo,
+            deps.cache,
+            deps.messageBus,
+        ),
     );
     await reservationRoutes(app, controller);
 }

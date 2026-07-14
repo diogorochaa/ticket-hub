@@ -36,4 +36,28 @@ export class PrismaTicketRepository implements TicketRepository {
         const rows = await this.prisma.ticket.findMany({ where: { sectorId } });
         return rows.map(TicketMapper.toDomain);
     }
+
+    async tryReserve(id: string): Promise<boolean> {
+        const result = await this.prisma.ticket.updateMany({
+            where: { id, status: "AVAILABLE" },
+            data: { status: "RESERVED", updatedAt: new Date() },
+        });
+        return result.count === 1;
+    }
+
+    async tryRelease(id: string): Promise<boolean> {
+        const result = await this.prisma.ticket.updateMany({
+            where: { id, status: "RESERVED" },
+            data: { status: "AVAILABLE", updatedAt: new Date() },
+        });
+        return result.count === 1;
+    }
+
+    async tryMarkSold(id: string): Promise<boolean> {
+        const result = await this.prisma.ticket.updateMany({
+            where: { id, status: "RESERVED" },
+            data: { status: "SOLD", updatedAt: new Date() },
+        });
+        return result.count === 1;
+    }
 }

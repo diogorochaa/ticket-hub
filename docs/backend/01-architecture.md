@@ -43,11 +43,16 @@ A montagem de dependências é **explícita e por módulo**:
 
 ```
 server.ts
-  → registerModules({ prisma, eventBus, mailer, passwordHasher, tokenService })
+  → registerModules({ prisma, eventBus, mailer, passwordHasher, tokenService, cache, lock, messageBus })
       → registerNotificationsModule(...)
       → registerUsersModule(...)
       → registerAuthModule(...)
-      → registerEventsModule(...)   # futuro
+      → registerVenuesModule(...)
+      → registerEventsModule(...)
+      → registerSectorsModule(...)
+      → registerTicketsModule(...)
+      → registerReservationsModule(...)
+      → registerPaymentsModule(...)
 ```
 
 Deps compartilhadas ficam tipadas em `core/app-deps.ts`.
@@ -67,15 +72,20 @@ Libs de DI (tsyringe, inversify, Nest) ficam de fora por enquanto; ver [ADR 002]
 - Controllers traduzem erros de domínio em status HTTP
 - Rotas não conhecem Prisma nem regras de negócio — só controllers
 
-## Persistência
+## Persistência e escala
 
-- **PostgreSQL** como banco principal — ver [ADR 004](../adr/backend/004-use-postgresql.md)
+- **PostgreSQL** como banco principal / source of truth — ver [ADR 004](../adr/backend/004-use-postgresql.md)
 - **Prisma** como ORM/acesso a dados na infra — ver [ADR 003](../adr/backend/003-use-prisma.md)
+- **Redis** cache + locks — ver [ADR 007](../adr/backend/007-use-redis-cache-locks.md)
+- **RabbitMQ** eventos async — ver [ADR 008](../adr/backend/008-use-rabbitmq.md)
+- **Nginx** load balancer — ver [ADR 009](../adr/backend/009-load-balancer-stateless-api.md)
 - Prisma Client gerado em `apps/api/generated/prisma`
 - Adapter `pg` (`@prisma/adapter-pg`)
 - Repositórios implementam ports definidos no domínio (o domínio não importa Prisma)
 
-Infra local dos serviços (Postgres hoje; Redis/Rabbit/etc. no futuro) sobe com **Docker Compose** — ver [ADR 005](../adr/backend/005-use-docker.md).
+Plano de 100k ingressos/evento: [04-scale-100k.md](./04-scale-100k.md).
+
+Infra local (Postgres, Redis, RabbitMQ, Nginx, Mailpit) sobe com **Docker Compose** — ver [ADR 005](../adr/backend/005-use-docker.md).
 
 ## Como adicionar um módulo novo
 

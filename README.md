@@ -15,7 +15,7 @@ packages/
   ui/                 Componentes compartilhados
   eslint-config/      Configurações ESLint
   typescript-config/  Configurações TypeScript
-docker/               Infra local (PostgreSQL, Mailpit)
+docker/               Infra local (Postgres, Redis, RabbitMQ, Nginx, Mailpit)
 docs/                 Domínio, backend, frontend e ADRs
 ```
 
@@ -23,14 +23,14 @@ docs/                 Domínio, backend, frontend e ADRs
 
 - Node.js >= 18
 - pnpm 9
-- Docker (PostgreSQL + Mailpit)
+- Docker (stack local completa)
 
 ## Setup
 
 ```sh
 pnpm install
 
-# sobe o banco (+ Mailpit)
+# sobe Postgres + Redis + RabbitMQ + Nginx + Mailpit
 docker compose -f docker/docker-compose.yml up -d
 
 # API: variáveis de ambiente
@@ -45,10 +45,11 @@ pnpm migration
 ## Desenvolvimento
 
 ```sh
-pnpm dev                      # turbo (api + web + …)
-pnpm --filter api dev         # só a API → http://127.0.0.1:3000
-pnpm --filter web dev         # só o web
+pnpm --filter api dev         # API → http://127.0.0.1:3000 (também via Nginx :8080)
+pnpm --filter web dev         # web
 ```
+
+Escala (100k ingressos): [docs/backend/04-scale-100k.md](docs/backend/04-scale-100k.md).
 
 ## Documentação
 
@@ -65,6 +66,7 @@ Comece por [docs/README.md](docs/README.md).
 ## Stack principal
 
 - **API:** Node.js, Fastify, Zod, Prisma, PostgreSQL
+- **Escala:** Redis (cache/locks), RabbitMQ (eventos), Nginx (LB)
 - **Frontend:** React, Vite, TanStack Query, shadcn/ui, Tailwind
 - **Monorepo:** pnpm, Turborepo
 - **Infra local:** Docker

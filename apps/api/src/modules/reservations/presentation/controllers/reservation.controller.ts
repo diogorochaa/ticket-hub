@@ -1,5 +1,6 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
 
+import { TicketLockBusyError } from "@/modules/tickets/domain/errors/ticket-lock-busy.error";
 import { TicketNotAvailableError } from "@/modules/tickets/domain/errors/ticket-not-available.error";
 import { TicketNotFoundError } from "@/modules/tickets/domain/errors/ticket-not-found.error";
 import type { CancelReservationUseCase } from "../../application/use-cases/cancel-reservation";
@@ -33,6 +34,9 @@ export class ReservationController {
                 return reply.status(404).send({ message: error.message });
             }
             if (error instanceof TicketNotAvailableError) {
+                return reply.status(409).send({ message: error.message });
+            }
+            if (error instanceof TicketLockBusyError) {
                 return reply.status(409).send({ message: error.message });
             }
             throw error;

@@ -7,6 +7,7 @@ Documentação da API em `apps/api`.
 | [01-architecture.md](./01-architecture.md) | Hexagonal, módulos, composition root |
 | [02-users-module.md](./02-users-module.md) | CRUD de usuários |
 | [03-auth-module.md](./03-auth-module.md) | Auth JWT + refresh + e-mail |
+| [04-scale-100k.md](./04-scale-100k.md) | Escala 100k ingressos (Redis, Rabbit, LB) |
 
 ## Módulos HTTP (API)
 

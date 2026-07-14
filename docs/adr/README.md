@@ -18,6 +18,9 @@ Cada pasta renumera a partir de `001`. O número só é único **dentro** da pas
 | [004](./backend/004-use-postgresql.md) | PostgreSQL como banco de dados | Aceito |
 | [005](./backend/005-use-docker.md) | Docker Compose para infra local | Aceito |
 | [006](./backend/006-auth-jwt-refresh.md) | Auth JWT + refresh opaco | Aceito |
+| [007](./backend/007-use-redis-cache-locks.md) | Redis (cache + locks) | Aceito |
+| [008](./backend/008-use-rabbitmq.md) | RabbitMQ (eventos async) | Aceito |
+| [009](./backend/009-load-balancer-stateless-api.md) | Load balancer + API stateless | Aceito |
 
 ## Frontend (`adr/frontend/`)
 
