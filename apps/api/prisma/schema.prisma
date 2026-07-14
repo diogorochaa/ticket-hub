@@ -15,6 +15,8 @@ model User {
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
   refreshTokens RefreshToken[]
+  organizedEvents Event[]      @relation("EventOrganizer")
+  reservations  Reservation[]
 }
 
 model RefreshToken {
@@ -27,4 +29,89 @@ model RefreshToken {
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+}
+
+model Venue {
+  id        String   @id @default(uuid())
+  name      String
+  address   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  events    Event[]
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  startsAt    DateTime
+  venueId     String
+  organizerId String
+  status      String   @default("DRAFT")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  venue       Venue    @relation(fields: [venueId], references: [id])
+  organizer   User     @relation("EventOrganizer", fields: [organizerId], references: [id])
+  sectors     Sector[]
+  tickets     Ticket[]
+
+  @@index([venueId])
+  @@index([organizerId])
+}
+
+model Sector {
+  id         String   @id @default(uuid())
+  eventId    String
+  name       String
+  capacity   Int
+  priceCents Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  event      Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  tickets    Ticket[]
+
+  @@index([eventId])
+}
+
+model Ticket {
+  id           String        @id @default(uuid())
+  eventId      String
+  sectorId     String
+  status       String        @default("AVAILABLE")
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  event        Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  sector       Sector        @relation(fields: [sectorId], references: [id], onDelete: Cascade)
+  reservations Reservation[]
+
+  @@index([eventId])
+  @@index([sectorId])
+  @@index([status])
+}
+
+model Reservation {
+  id        String    @id @default(uuid())
+  userId    String
+  ticketId  String
+  expiresAt DateTime
+  status    String    @default("ACTIVE")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  user      User      @relation(fields: [userId], references: [id])
+  ticket    Ticket    @relation(fields: [ticketId], references: [id])
+  payment   Payment?
+
+  @@index([userId])
+  @@index([ticketId])
+}
+
+model Payment {
+  id            String      @id @default(uuid())
+  reservationId String      @unique
+  amountCents   Int
+  status        String      @default("PENDING")
+  externalId    String?     @unique
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  reservation   Reservation @relation(fields: [reservationId], references: [id])
 }
