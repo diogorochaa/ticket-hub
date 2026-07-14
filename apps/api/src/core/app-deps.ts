@@ -1,4 +1,4 @@
-import type { prisma } from "@/infra/db/prisma/prisma";
+import type { prisma } from "@/infra/prisma/prisma";
 import type { TokenService } from "@/modules/auth/application/ports/token-service";
 import type { Mailer } from "@/modules/notifications/application/ports/mailer";
 import type { PasswordHasher } from "@/modules/users/application/ports/password-hasher";

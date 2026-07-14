@@ -18,8 +18,8 @@ apps/api
 
 ```
 apps/web/src/
-  app/              provider(s), layout da app
-  pages/            rotas / telas
+  App.tsx           BrowserRouter + rotas
+  pages/            telas
   components/       componentes de produto
     ui/             componentes shadcn
   hooks/            hooks da aplicação

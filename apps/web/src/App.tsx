@@ -1,7 +1,14 @@
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+
+import { HomePage } from '@/pages/home'
+
 export function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }

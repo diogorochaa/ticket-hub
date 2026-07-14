@@ -7,7 +7,7 @@ import {
 
 import { registerModules } from "@/core/register-modules";
 import { env } from "@/core/env";
-import { prisma } from "@/infra/db/prisma/prisma";
+import { prisma } from "@/infra/prisma/prisma";
 import { RabbitMqMessageBus } from "@/infra/rabbitmq/rabbitmq-message-bus";
 import { createRedisClient } from "@/infra/redis/redis-client";
 import { RedisCacheStore } from "@/infra/redis/redis-cache-store";

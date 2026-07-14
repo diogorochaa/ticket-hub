@@ -138,7 +138,7 @@ Configuração relevante no projeto:
 - Schema: `apps/api/prisma/schema.prisma`
 - Config: `apps/api/prisma.config.ts`
 - Client gerado: `apps/api/generated/prisma`
-- Instância: `apps/api/src/infra/db/prisma/prisma.ts`
+- Instância: `apps/api/src/infra/prisma/prisma.ts`
 
 ---
 
