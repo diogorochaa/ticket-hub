@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin } from "lucide-react";
@@ -42,6 +43,7 @@ export function HomePage() {
           </ul>
         </div>
       </section>
+      <Footer />
 
     </>
   );
