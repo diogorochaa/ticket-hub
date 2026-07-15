@@ -1,6 +1,6 @@
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { Car } from "lucide-react";
 
 import { HeaderItem } from "./item";
 
@@ -22,8 +22,12 @@ export function Header() {
           </ul>
         </div>
         <ul className="flex items-center gap-4">
-          <HeaderItem to="/" aria-label="Buscar">
-            <Search className="w-6 h-6" aria-hidden />
+          <HeaderItem
+            to="/"
+            className="group"
+            aria-label="Carrinho"
+          >
+            <Car className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-2 hover:rotate-180" />
           </HeaderItem>
           <HeaderItem to="/">
             <Button size="lg" variant="ghost" className="cursor-pointer">
