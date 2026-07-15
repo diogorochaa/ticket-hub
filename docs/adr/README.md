@@ -28,3 +28,4 @@ Cada pasta renumera a partir de `001`. O número só é único **dentro** da pas
 |-----|---------|--------|
 | [001](./frontend/001-use-tanstack-query.md) | TanStack Query para server state | Aceito |
 | [002](./frontend/002-use-shadcn.md) | shadcn/ui como base de componentes | Aceito |
+| [003](./frontend/003-use-compound-components.md) | Composition interna (Header/Footer) | Aceito |

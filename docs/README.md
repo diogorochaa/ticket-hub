@@ -24,5 +24,7 @@
 
 | Documento | Conteúdo |
 |-----------|----------|
-| [frontend/01-architecture.md](./frontend/01-architecture.md) | Arquitetura do web (React + Vite) |
-| [adr/frontend/](./adr/frontend/) | ADRs do frontend (TanStack Query, shadcn) |
+| [frontend/README.md](./frontend/README.md) | Índice do frontend |
+| [frontend/01-architecture.md](./frontend/01-architecture.md) | Stack, pastas, data fetching, UI |
+| [frontend/02-components.md](./frontend/02-components.md) | Header/Footer autocontidos |
+| [adr/frontend/](./adr/frontend/) | ADRs (Query, shadcn, compounds) |

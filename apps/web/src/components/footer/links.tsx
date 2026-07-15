@@ -1,102 +1,53 @@
-import type { FooterNavItemProps } from "@/components/footer/footer-nav-item";
-import { Flag, ListChecks, MessageCircleCheck, ThumbsUp } from "lucide-react";
+import type { NavLink, SocialNavLink } from "@/components/shared/types/nav-link";
+import { Banknote, CreditCard, Flag, ListChecks, MessageCircleCheck, Euro, DollarSign, ThumbsUp } from "lucide-react";
 
-interface LinkProps {
-    children: React.ReactNode;
-    to: string;
-}
+export const socialLinks: SocialNavLink[] = [
+  {
+    icon: MessageCircleCheck,
+    label: "WhatsApp",
+    to: "/",
+  },
+  {
+    icon: ThumbsUp,
+    label: "Facebook",
+    to: "/",
+  },
+  {
+    icon: Flag,
+    label: "Twitter",
+    to: "/",
+  },
+  {
+    icon: ListChecks,
+    label: "Lista de benefícios",
+    to: "/",
+  },
+];
 
-export const socialLinks: FooterNavItemProps[] = [
-    {
-        children: <MessageCircleCheck className="w-4 h-4" />,
-        to: "/",
-    },
-    {
-        children: <ThumbsUp className="w-4 h-4" />,
-        to: "/",
-    },
-    {
-        children: <Flag className="w-4 h-4" />,
-        to: "/",
-    },
-    {
-        children: <ListChecks className="w-4 h-4" />,
-        to: "/",
-    },
-]
+export const institutionalLinks: NavLink[] = [
+  { label: "Sobre nós", to: "/" },
+  { label: "Carreiras", to: "/" },
+  { label: "Imprensa", to: "/" },
+  { label: "Contato", to: "/" },
+];
 
-export const institutionalLinks: LinkProps[] = [
-    {
-        children: "Sobre nós",
-        to: "/",
-    },
-    {
-        children: "Carreiras",
-        to: "/",
-    },
-    {
-        children: "Imprensa",
-        to: "/",
-    },
-    {
-        children: "Contato",
-        to: "/",
-    },
-]
+export const helpLinks: NavLink[] = [
+  { label: "Central de Ajuda", to: "/" },
+  { label: "Como comprar", to: "/" },
+  { label: "Trocas e devoluções", to: "/" },
+  { label: "Política de privacidade", to: "/" },
+];
 
-export const helpLinks: LinkProps[] = [
-    {
-        children: "Central de Ajuda",
-        to: "/",
-    },
-    {
-        children: "Como comprar",
-        to: "/",
-    },
-    {
-        children: "Trocas e devoluções",
-        to: "/",
-    },
-    {
-        children: "Política de privacidade",
-        to: "/",
-    },
-]
+export const ticketLinks: NavLink[] = [
+  { label: "Meus Ingressos", to: "/" },
+  { label: "Transferir ingresso", to: "/" },
+  { label: "Formas de pagamento", to: "/" },
+  { label: "Venda seu evento", to: "/" },
+];
 
-export const ticketLinks: LinkProps[] = [
-    {
-        children: "Meus Ingressos",
-        to: "/",
-    },
-    {
-        children: "Transferir ingresso",
-        to: "/",
-    },
-    {
-        children: "Formas de pagamento",
-        to: "/",
-    },
-    {
-        children: "Venda seu evento",
-        to: "/",
-    },
-]
-
-export const paymentLinks: LinkProps[] = [
-    {
-        children: "Cartão de crédito",
-        to: "/",
-    },
-    {
-        children: "Boleto",
-        to: "/",
-    },
-    {
-        children: "Pix",
-        to: "/",
-    },
-    {
-        children: "Transferência bancária",
-        to: "/",
-    },
-]
+export const paymentLinks: NavLink[] = [
+  { icon: CreditCard, label: "Cartão de crédito", to: "/" },
+  { icon: DollarSign, label: "Dinheiro", to: "/" },
+  { icon: Euro, label: "Pix", to: "/" },
+  { icon: Banknote, label: "Boleto", to: "/" },
+];

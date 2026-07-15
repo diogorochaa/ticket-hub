@@ -107,4 +107,6 @@ import { Button } from "@/components/ui/button"
 
 - https://ui.shadcn.com
 - [Arquitetura do frontend](../../frontend/01-architecture.md)
+- [Componentes e composition](../../frontend/02-components.md)
 - [ADR 001 - TanStack Query](./001-use-tanstack-query.md)
+- [ADR 003 - Compound components](./003-use-compound-components.md)

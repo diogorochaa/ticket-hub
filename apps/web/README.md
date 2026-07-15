@@ -1,34 +1,24 @@
-# React + TypeScript + Vite
+# TicketHub Web (`apps/web`)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+SPA do TicketHub: React 19 + Vite 8 + React Router 7 + Tailwind 4 + shadcn/ui.
 
-Currently, two official plugins are available:
+Documentação canônica: **[docs/frontend/](../../docs/frontend/)**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Doc | Conteúdo |
+|-----|----------|
+| [Arquitetura](../../docs/frontend/01-architecture.md) | Stack e pastas |
+| [Componentes](../../docs/frontend/02-components.md) | Header/Footer autocontidos |
+| [ADRs](../../docs/adr/frontend/) | Decisões (Query, shadcn, compounds) |
 
-## React Compiler
+## Scripts
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+pnpm --filter web dev      # Vite HMR
+pnpm --filter web build    # tsc -b + vite build
+pnpm --filter web lint     # oxlint
+pnpm --filter web preview  # build preview
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Alias
+
+`@/*` → `src/*` (Vite + TypeScript).
